@@ -1,0 +1,70 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: title   start ]
+Practical 7(b) : Simpson's Rule
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: title   start ]
+
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Question: Evaluate I = integrate(1/(5+3x), x,
+1, 2) 
+using the Simpson’s rule.
+
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+f(x):=1/(5+3*x);
+'a=a:1.0;
+'b=b:2.0;
+'h=h:(b-a)/2;
+for i:0 thru 2 do (
+    x[i]:a+(i*h),
+    y[i]:float(f(x[i])),
+    print('x[i]=x[i], "      ",'y[i]=y[i])
+)$
+print("Approx integral is ",(h/3)*(y[0]+4*y[1]+y[2]));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Question: Evaluate I = integrate(1/(5+3x), x,1,
+2) using the composite Simpson’s rule with 8
+subintervals
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+f(x):=1/(5+3*x);
+'a=a:1.0;
+'b=b:2.0;
+'n=n:8;
+'h=h:(b-a)/n;
+for i:0 thru n do (
+    x[i]:a+(i*h),
+    y[i]:float(f(x[i])),
+    print('x[i]=x[i],"    ",'y[i]=y[i])
+)$
+'sum2=sum2:0.0$
+'sum4=sum4:0.0$
+for i:1 thru n-1 do (
+    if is(equal(mod(i,2),0)) then sum2:float(sum2+(y[i])) else sum4:float(sum4+y[i])
+)$
+print("Approx integral is ",(h/3)*(y[0]+y[n]+4*sum4+2*sum2));
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

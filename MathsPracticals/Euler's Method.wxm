@@ -1,0 +1,47 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: title   start ]
+Practical 8 : Euler's Method
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Question : Consider the IVP
+dy/dx=(x^2)+y with y(0)=1.
+ Find the approximated
+value of y at 0.4 or y(0.4) with
+step size 0.1. 
+ 0.1 
+Solution: The number of iterations n =4
+ x0=0, h=0.1
+ x1=x0+h=0+0.1=0.1
+ x2=x0+2h=0+0.2=0.2,x2=x1+h
+ x3=x0+3h=0+0.3=0.3
+ x4=x0+4h=0+0.4=0.4
+We need to find y(x4).
+
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+f(x,y):=x^2+y;
+'x0=x0:0.0;
+'y0=y0:1.0;
+'xn=xn:0.4;
+h:0.1;
+n:4;
+print("itr","  ","x0","  ","yo");
+for i:1 thru n do (
+    slope:f(x0,y0),
+    y[i]:y0+h*slope,
+    print(i,"  ",x0,"  ",y0),
+    x0:x0+h,
+    y0:y[i]
+)$
+print("y(0.4 ) is",y[n]);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

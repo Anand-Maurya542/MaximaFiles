@@ -1,0 +1,77 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: title   start ]
+Practical 2(a) : Secant Formula
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Name - Anand Kumar Maurya
+Roll no. - 18017
+Course: B.Sc (H) Computer Science
+
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Q1 Perform 6 iterations of the Secant method to
+obtain a real root of the following equation
+in the interval(0,1): 
+ f(x) = x^3-5x+1=0.
+
+Solution:
+
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+f(x):=x^3-5*x+1;
+'x0=x0:0.0;
+'x1=x1:1.0;
+n:6;
+for i:1 thru 6 do (
+    if is(equal(f(x0),f(x1))) then return() else x2:((x0*f(x1))-(x1*f(x0)))/(f(x1)-f(x0)),
+    x0:x1,x1:x2,
+    print(i,"iteration gives root ",x2)
+);
+print("Root is ",x2);
+wxplot2d(f(x),[x,0,1]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Q2 Perform 6 iterations of the Secant method to
+obtain a real root of the following equation
+in the interval(1,2): 
+ f(x) = x^3-4x^2-10=0.
+
+Solution:
+
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+f(x):=x^3-4*x^2-10;
+'x0=x0:1.0;
+'x1=x1:2.0;
+n:6;
+for i:1 thru 6 do (
+    if is(equal(f(x0),f(x1))) then return() else x2:((x0*f(x1))-(x1*f(x0)))/(f(x1)-f(x0)),
+    x0:x1,x1:x2,
+    print(i,"iteration gives root ",x2)
+);
+print("Root is ",x2);
+wxplot2d(f(x),[x,0,1]);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$
