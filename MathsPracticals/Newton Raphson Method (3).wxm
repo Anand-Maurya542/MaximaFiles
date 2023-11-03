@@ -1,0 +1,38 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: title   start ]
+Practical 3 : Newton Raphson Method
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Theory: x(n+1)= x(n)- f(x(n))/f'(x(n))
+Q1 Perform 5 iterations of the Newton Raphson
+Method to find out the smallest positive root
+of the following equation starting with the
+initial approximation x_0=0.5,
+ f(x) = x^3-5x+1=0.
+
+Solution:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+f(x):=x^3-5*x+1;
+'x0=x0:0.5;
+define(an(x),diff(f(x),x));
+n:5;
+for i:1 thru n do (
+    if is(equal(an(x0),0.0)) then return() else x1:(x0-(f(x0)/an(x0))),
+    x0:x1,
+    print(i,"iteration gives root ",x1)
+);
+print("Root is ",x1);
+wxplot2d(f(x),[x,-2,3],[y,-10,15],[ylabel,"f(x)"]);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

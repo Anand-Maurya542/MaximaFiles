@@ -1,0 +1,126 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: title   start ]
+Practical 1 : Bisection Method
+
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Name : Anand Kumar Maurya
+Roll no. - 18017
+Course - B.Sc (H) Computer Science
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Q1. Perform 10 iterations of the Bisection
+method to obtain a real root of the following
+equation:
+f(x)= x^3-5x+1 = 0 in the interval (0,1).
+
+Solution:
+
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+'x0=x0:0.0$
+'x1=x1:1.0$
+n:10$
+f(x):=x^3-5*x+1;
+if (float((f(x0)*f(x1))>0)) then print("Change Values") else 
+for i:1 thru n do (
+    a:(x0+x1)/2,
+    if (f(a)=0) then return (a) else if ((f(a)*f(x0))<0) then x1:a else x0:a,
+    print(i," iteration gives ",a)
+);
+
+print("The Root is ",a);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d(f(x),[x,0,1.0],[ylabel,"f(x)"]);
+
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Q2. Perform 8 iterations of the Bisection
+method to obtain a real root of the following
+equation:
+f(x)= x^2-7x+2 = 0 in the interval (-2,1).
+
+Solution:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+'x0=x0:-2.0$
+'x1=x1:1.0$
+n:8$
+f(x):=x^2-7*x+2;
+if (float((f(x0)*f(x1))>0)) then print("Change Values") else for i:1 thru n do (
+    a:(x0+x1)/2,
+    if (f(a)=0) then return (a) else if((f(a)*f(x0))<0) then x1:a else x0:a,
+    print(i," iteration gives ",a)
+);
+
+print("The Root is ",a);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d(f(x),[x,-2,1],[y,0,10],[ylabel,"f(x)"]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Q2. Perform 8 iterations of the Bisection
+method to obtain a real root of the following
+equation:
+f(x)= x^3-4x-9 = 0 in the interval (2,3).
+
+Solution:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+'x0=x0:2.0$
+'x1=x1:3.0$
+n:8$
+f(x):=x^3-4*x-9;
+if (float((f(x0)*f(x1))>0)) then print("Change Values") else 
+for i:1 thru n do (
+    a:(x0+x1)/2,
+    if (f(a)=0) then return (a) else if ((f(a)*f(x0))<0) then x1:a else x0:a,
+    print(i," iteration gives ",a)
+);
+
+print("The Root is ",a);
+wxplot2d(f(x),[x,2,3],[ylabel,"f(x)"]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+
+   [wxMaxima: comment end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

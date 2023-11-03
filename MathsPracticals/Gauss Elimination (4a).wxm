@@ -1,0 +1,94 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: title   start ]
+Practical 4(a) : Gauss Elimination Method
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Q1.Solve the system of
+equations
+3x1 - 0.1x2 - 0.2x3 = 7.85
+0.1x1 + 7x2 -0.3x3 = -19.3
+0.3x1 - 0.2x2 + 10x3 = 71.4
+using the Gauss elimination
+method.
+
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+keepfloat:true$
+'A=A:matrix(
+        [3,-0.1,-0.2],
+        [0.1,7,-0.3],
+        [0.3,-0.2,10]
+);
+'B=B:matrix(
+    [7.85],[-19.3],[71.4]
+);
+'X=X:matrix(
+    ['x],['y],['z]
+);
+
+print("Let ",'A=A," , ",'B=B," , ",'X=X);
+print("");
+print("Now, the augumented matrix will be , ");
+print("");
+
+'Aug=Aug:addcol(A,B);
+print("");
+print("Forward Elimination");
+n:length(A[1]);
+
+for k:1 thru n-1 do (
+    for i:k+1 thru n do (
+        factor:Aug[i,k]/Aug[k,k],
+        print(""),
+        print("=> R",i,"= R",i,"- (",'Aug[i,k]/'Aug[k,k],")*","R",k),
+        Aug[i]:(Aug[i]-factor.Aug[k]),
+        print(Aug)
+    )
+);
+
+print("");
+print("Therefore, the augumented matrix ");
+print("reduced to upper triangular form will be, ");
+print("");
+Aug;
+
+print("");
+print("Now, the system of equations wil be, ");
+load("eigen");
+AA:innerproduct(submatrix(Aug,n+1),x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+3x1 - 0.1x2 - 0.2x3 = 7.85
+0.1x1 + 7x2 -0.3x3 = -19.3
+0.3x1 - 0.2x2 + 10x3 = 71.4
+
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+'A=A:matrix([3,-0.1,-0.2],[0.1,7,-0.3],[0.3,-0.2,10]);
+'B=B:[7.85,-19.3,71.4];
+'X=X:[x1,x2,x3];
+'AB=AB:addcol(A,B);
+'E=E:echelon(AB);
+X=invert(echelon(A)).col(E,4);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

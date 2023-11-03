@@ -1,0 +1,52 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: title   start ]
+Practical 6(b): Newton Interpolation
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: comment start ]
+.Using Newton’s divided
+difference interpolation,
+find y(10) given that 
+y(5) = 12, y(6) = 13, y(9) =
+14, y(11) = 16.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+x=x:[5,6,9,11];
+y:zeromatrix(4,4)$
+y[1][1]:12$
+y[2][1] : 13$
+y[3][1] : 14$
+y[4][1] : 16$
+
+'y=y;
+n:length(x)$
+for i:2 thru n do (
+    for j:1 thru n-i+1 do (
+        y[j][i]:(y[j+1][i-1]-y[j][i-1])/(x[j+i-1]-x[j])
+    )
+)$
+print(y);
+x_t:1$
+f:y[1][1]$
+for j:1 thru n-1 do (
+    x_t:x_t*('x-x[j]),
+    f:f+y[1][j+1]*x_t,
+    print("Iteration ",j," gives",expand(f))
+)$
+
+'b=y;
+'f('x)=expand(f);
+print("f(10) gives",ev(f,x=10));
+wxplot2d([f,[discrete,x,args(map(first,y))]],['x,-1,20],[legend,"f(x)","given"]);
+
+
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$
